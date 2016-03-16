@@ -594,9 +594,9 @@ public class CellLayout extends ViewGroup {
             boolean markCells) {
         final LayoutParams lp = params;
 
-        // Hotseat icons - remove text
+        // Hotseat icons - show text
         if (mIsHotseat && child instanceof BubbleTextView) {
-            ((BubbleTextView) child).setTextVisibility(false);
+            ((BubbleTextView) child).setTextVisibility(true);
         }
 
         child.setScaleX(getChildrenScale());
