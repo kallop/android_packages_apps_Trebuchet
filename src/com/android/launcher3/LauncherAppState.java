@@ -45,7 +45,6 @@ public class LauncherAppState implements DeviceProfile.DeviceProfileCallbacks {
     private static final boolean DEBUG = false;
 
     private final AppFilter mAppFilter;
-    private final BuildInfo mBuildInfo;
     private final LauncherModel mModel;
     private final IconCache mIconCache;
 
@@ -104,7 +103,6 @@ public class LauncherAppState implements DeviceProfile.DeviceProfileCallbacks {
         mIconCache = new IconCache(sContext);
 
         mAppFilter = AppFilter.loadByName(sContext.getString(R.string.app_filter_class));
-        mBuildInfo = BuildInfo.loadByName(sContext.getString(R.string.build_info_class));
         mModel = new LauncherModel(this, mIconCache, mAppFilter);
         final LauncherAppsCompat launcherApps = LauncherAppsCompat.getInstance(sContext);
         launcherApps.addOnAppsChangedCallback(mModel);
@@ -274,12 +272,7 @@ public class LauncherAppState implements DeviceProfile.DeviceProfileCallbacks {
 
     public static boolean isDisableAllApps() {
         // Returns false on non-dogfood builds.
-        return getInstance().mBuildInfo.isDogfoodBuild() &&
-                Utilities.isPropertyEnabled(Launcher.DISABLE_ALL_APPS_PROPERTY);
-    }
-
-    public static boolean isDogfoodBuild() {
-        return getInstance().mBuildInfo.isDogfoodBuild();
+        return true;
     }
 
     public void setPackageState(ArrayList<PackageInstallInfo> installInfo) {

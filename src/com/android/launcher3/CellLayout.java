@@ -556,9 +556,6 @@ public class CellLayout extends ViewGroup {
         try {
             dispatchRestoreInstanceState(states);
         } catch (IllegalArgumentException ex) {
-            if (LauncherAppState.isDogfoodBuild()) {
-                throw ex;
-            }
             // Mismatched viewId / viewType preventing restore. Skip restore on production builds.
             Log.e(TAG, "Ignoring an error while restoring a view instance state", ex);
         }

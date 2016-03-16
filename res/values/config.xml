@@ -108,10 +108,6 @@
          filter the activities shown in the launcher. Can be empty. -->
     <string name="app_filter_class" translatable="false"></string>
 
-    <!-- Name of a subclass of com.android.launcher3.BuildInfo used to
-         get build information. Can be empty. -->
-    <string name="build_info_class" translatable="false"></string>
-
 <!-- Hotseat -->
     <bool name="hotseat_transpose_layout_with_orientation">true</bool>
     <integer name="hotseat_cell_count">5</integer>

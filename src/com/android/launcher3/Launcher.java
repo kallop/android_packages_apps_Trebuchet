@@ -198,7 +198,6 @@ public class Launcher extends Activity
     // To turn on these properties, type
     // adb shell setprop log.tag.PROPERTY_NAME [VERBOSE | SUPPRESS]
     static final String DUMP_STATE_PROPERTY = "launcher_dump_state";
-    static final String DISABLE_ALL_APPS_PROPERTY = "launcher_noallapps";
 
     // The Intent extra that defines whether to ignore the launch animation
     static final String INTENT_EXTRA_IGNORE_LAUNCH_ANIMATION =
@@ -4910,11 +4909,7 @@ public class Launcher extends Activity
                             Object tag = v.getTag();
                             String desc = "Collision while binding workspace item: " + item
                                     + ". Collides with " + tag;
-                            if (LauncherAppState.isDogfoodBuild()) {
-                                throw (new RuntimeException(desc));
-                            } else {
-                                Log.d(TAG, desc);
-                            }
+                            Log.d(TAG, desc);
                         }
                     }
 
