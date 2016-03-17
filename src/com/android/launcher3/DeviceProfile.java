@@ -448,9 +448,9 @@ public class DeviceProfile {
         dragViewScale = (iconSizePx + scaleDps) / iconSizePx;
 
         // Hotseat
-        hotseatBarHeightPx = iconSizePx + 10 * edgeMarginPx;
+        hotseatBarHeightPx = (int) ((iconSizePx + 4 * edgeMarginPx) * 1.1);
         hotseatCellWidthPx = iconSizePx;
-        hotseatCellHeightPx = iconSizePx;
+        hotseatCellHeightPx = hotseatBarHeightPx;
 
         // Folder
         folderCellWidthPx = cellWidthPx + 3 * edgeMarginPx;
