@@ -51,13 +51,9 @@ LOCAL_AAPT_FLAGS := \
     --extra-packages com.cyanogen.ambient
 
 #LOCAL_SDK_VERSION := current
+LOCAL_CERTIFICATE := platform
 LOCAL_PACKAGE_NAME := Trebuchet
 LOCAL_PRIVILEGED_MODULE := true
-
-# Sign the package when not using test-keys
-ifneq ($(DEFAULT_SYSTEM_DEV_CERTIFICATE),build/target/product/security/testkey)
-LOCAL_CERTIFICATE := cyngn-app
-endif
 
 LOCAL_AAPT_FLAGS += --rename-manifest-package com.cyanogenmod.trebuchet
 
