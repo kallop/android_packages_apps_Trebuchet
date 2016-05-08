@@ -700,10 +700,7 @@ public class Launcher extends Activity
 
     /** To be overridden by subclasses to hint to Launcher that we have custom content */
     protected boolean hasCustomContentToLeft() {
-        if (mLauncherCallbacks != null) {
-            return mLauncherCallbacks.hasCustomContentToLeft();
-        }
-        return false;
+        return true;
     }
 
     /**
@@ -712,9 +709,18 @@ public class Launcher extends Activity
      * {@link #hasCustomContentToLeft()} is {@code true}.
      */
     protected void populateCustomContentContainer() {
-        if (mLauncherCallbacks != null) {
-            mLauncherCallbacks.populateCustomContentContainer();
-        }
+        View customView = getLayoutInflater().inflate(R.layout.custom, null);
+        CustomContentCallbacks callbacks = new CustomContentCallbacks() {
+            @Override
+            public void onShow(boolean fromResume) {}
+            @Override
+            public void onScrollProgressChanged(float progress) {}
+            @Override
+            public void onHide() {}
+            @Override
+            public boolean isScrollingAllowed() {return true;}
+        };
+        addToCustomContentPage(customView, callbacks, "custom view");
     }
 
     /**

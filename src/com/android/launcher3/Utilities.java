@@ -57,6 +57,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.launcher3.widget.CircleFramedDrawable;
 import com.android.launcher3.settings.SettingsProvider;
 
 import java.io.ByteArrayOutputStream;
@@ -112,6 +113,20 @@ public final class Utilities {
     // adb shell setprop log.tag.PROPERTY_NAME [VERBOSE | SUPPRESS]
     private static final String FORCE_ENABLE_ROTATION_PROPERTY = "launcher_force_rotate";
     private static boolean sForceEnableRotation = isPropertyEnabled(FORCE_ENABLE_ROTATION_PROPERTY);
+
+    public static int getStatusBarHeight(Context context) {
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    public static Drawable encircle(Bitmap icon, Context context) {
+        Drawable circled = CircleFramedDrawable.getInstance(context, icon);
+        return circled;
+    }
 
     public static boolean isPropertyEnabled(String propertyName) {
         return Log.isLoggable(propertyName, Log.VERBOSE);
