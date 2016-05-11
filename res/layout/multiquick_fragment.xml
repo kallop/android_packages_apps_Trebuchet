@@ -11,7 +11,7 @@
         app:cardCornerRadius="8dp"
         app:cardBackgroundColor="@color/multi_quick_card_bg_color"
         android:layout_margin="8dp"
-        android:layout_height="278dp"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
@@ -20,15 +20,38 @@
                 android:id="@+id/icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="18dp" />
             <TextView
                 android:id="@+id/id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/icon"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
-                android:textColor="@color/multi_quick_card_text_color" />
+                android:layout_toRightOf="@id/icon"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginLeft="18dp"
+                android:textSize="50px"
+                android:textColor="#ffffff" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/icon"
+                android:layout_marginTop="32dp"
+                android:layout_marginLeft="18dp"
+                android:textSize="38px"
+                android:textColor="#ffffff" />
+            <TextView
+                android:id="@+id/vip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_toRightOf="@id/icon"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="18dp"
+                android:textSize="38px"
+                android:textColor="#ffffff" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 

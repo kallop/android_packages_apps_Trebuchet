@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -27,6 +28,8 @@ public class MultiQuickFragment extends Fragment {
     private CardView mIdCardView;
     private ImageView mIconImageView;
     private TextView mIdTextView;
+    private TextView mNameTextView;
+    private TextView mVipTextView;
 
     private UserManager mUserManager;
 
@@ -70,6 +73,8 @@ public class MultiQuickFragment extends Fragment {
         mIdCardView = (CardView) view.findViewById(R.id.id_cardview);
         mIconImageView = (ImageView) view.findViewById(R.id.icon);
         mIdTextView = (TextView) view.findViewById(R.id.id);
+        mNameTextView = (TextView) view.findViewById(R.id.name);
+        mVipTextView = (TextView) view.findViewById(R.id.vip);
         return view;
     }
 
@@ -77,8 +82,10 @@ public class MultiQuickFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViewPlace();
+        setTextTTF();
         loadUserIcon();
         loadUniqueID();
+        loadUserInfo();
     }
 
     @Override
@@ -92,6 +99,11 @@ public class MultiQuickFragment extends Fragment {
         params.topMargin = Utilities.getStatusBarHeight(getContext());
     }
 
+    private void setTextTTF() {
+        Typeface mTypeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/486.ttf");
+        mIdTextView.setTypeface(mTypeface);
+    }
+
     private void loadUserIcon() {
         int myUserId = UserHandle.myUserId();
         Bitmap b = mUserManager.getUserIcon(myUserId);
@@ -100,6 +112,11 @@ public class MultiQuickFragment extends Fragment {
 
     private void loadUniqueID() {
         mIdTextView.setText(Build.getUniqueID(getContext()));
+    }
+
+    private void loadUserInfo() {
+        mNameTextView.setText("Bacon");
+        mVipTextView.setText("Ordinary users");
     }
 
 }
