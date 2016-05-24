@@ -1953,7 +1953,7 @@ public class Launcher extends Activity
         if (gridSize != size.getValue() || customValuesChanged) {
             SettingsProvider.putInt(this,
                     SettingsProvider.SETTINGS_UI_DYNAMIC_GRID_SIZE, size.getValue());
-            reloadLauncher(false, true);
+            reloadLauncher(true, true);
         }
 
         // Must be called after reload and before settings invalidation.
@@ -2143,8 +2143,10 @@ public class Launcher extends Activity
         removeWidgetToAutoAdvance(launcherInfo.hostView);
         launcherInfo.hostView = null;
         AppWidgetProviderInfo info = mAppWidgetManager.getAppWidgetInfo(launcherInfo.appWidgetId);
-        String packageName = info.providerInfo.packageName;
-        LauncherApplication.getLauncherStats().sendWidgetRemoveEvent(packageName);
+        if (info != null) {
+            String packageName = info.providerInfo.packageName;
+            LauncherApplication.getLauncherStats().sendWidgetRemoveEvent(packageName);
+        }
     }
 
     public void showOutOfSpaceMessage(boolean isHotseatLayout) {
@@ -4579,6 +4581,7 @@ public class Launcher extends Activity
         mWorkspace.stripEmptyScreens();
 
         sRemoteFolderManager.bindFinished();
+        bindSearchProviderChanged();
     }
 
     private void sendLoadingCompleteBroadcastIfNecessary() {
